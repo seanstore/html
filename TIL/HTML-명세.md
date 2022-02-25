@@ -18,8 +18,6 @@ HTML 표준 명세를 제공하고 있더라도 브라우저 제조사가 구현
 
 <img width="400" alt="스크린샷 2022-02-25 오후 3 08 46" src="https://user-images.githubusercontent.com/100114050/155663644-f2750c4c-a167-421f-8934-34776aa36985.png">
 
-[a 엘리먼트 명세](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element)
-
 <img width="1100" alt="스크린샷 2022-02-25 오후 3 12 49" src="https://user-images.githubusercontent.com/100114050/155664068-c519e417-9709-422a-beb9-912bc3650943.png">
 
 ### Flow Content
@@ -72,8 +70,30 @@ Sectioning Content가 없어도 Heading Content가 있으면 암시적 개요가
 
 렌더링되지는 않지만 사용자에게 어떤 기능을 제공해주는 요소들이다.
 
-### Transparent Content Models
+### Transparent Content
 
 부모의 콘텐츠 모델을 따르며, 해당 요소를 제거해도 부모 자식 관계가 문법적으로 유효해야 한다.
 
 ## HTML 명세의 구성
+
+[a 엘리먼트 명세](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element)
+
+<img width="1100" alt="스크린샷 2022-02-25 오후 3 12 49" src="https://user-images.githubusercontent.com/100114050/155664068-c519e417-9709-422a-beb9-912bc3650943.png">
+
+- Categories
+- Context in which this element can be used
+  : 해당 엘리먼트를 허용하는 부모 요소를 유추할 수 있다. 단, 대체적으로 이러하다는 비규범적인 설명이다.
+- Content Model : 반드시 따라야 하는 규범적인 설명이다.
+- Tag omission in text/html
+- Content attributes
+
+```html
+<p>
+  <a>
+    <div>해당 마크업은 적절한가?</div>
+  </a>
+</p>
+```
+
+p 요소의 Content Model은 Phrasing Content, a 요소의 Content Model은 Transparent Content이므로 부모의 콘텐츠 모델을 따른다.
+따라서 a 요소의 자식 요소로는 Phrasing Content만 허용되는데 div 요소의 Content Model은 Flow, Palpable Content이므로 유효하지 않다.
